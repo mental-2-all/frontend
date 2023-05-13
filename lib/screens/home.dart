@@ -57,7 +57,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (!done) {
-      return CircularProgressIndicator();
+      return Scaffold
+      ( appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          color: Colors.black,
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
+          },
+        ),
+        title: const Text(
+          "Current Data",
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+      ),body: SizedBox(height: 200, width : 200, child: CircularProgressIndicator()));
     }
     return Scaffold(
       appBar: AppBar(
