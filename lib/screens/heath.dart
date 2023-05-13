@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
 import 'package:mental_2_day/services/redis.dart';
@@ -25,8 +24,6 @@ class _Heath extends State<Heath> {
       HealthDataType.HEART_RATE,
     ];
 
-    // requesting access to the data types before reading them
-    bool requested = await health.requestAuthorization(types);
 
     var now = DateTime.now();
     double avghr = 0;
@@ -72,17 +69,43 @@ class _Heath extends State<Heath> {
 
   @override
   Widget build(BuildContext context) {
-    sendHealthData();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Heath App Setup"),
+        title: Text('HealthKit'),
       ),
-      body: const Center(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text("")],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'What is HealthKit?',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'HealthKit is a framework developed by Apple for iOS devices that allows developers to integrate health and fitness data into their apps. HealthKit provides a centralized repository for storing health data from various sources, such as third-party fitness trackers and medical devices.',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'What kind of data can HealthKit track?',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'HealthKit can track a wide range of health and fitness data, such as:',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              '- Steps taken\n- Distance traveled\n- Calories burned\n- Heart rate\n- Blood pressure\n- Sleep\n- Nutrition\n- Medical records\n- And more',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

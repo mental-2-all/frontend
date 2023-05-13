@@ -5,7 +5,6 @@ import 'package:bottom_bar/bottom_bar.dart';
 import 'package:mental_2_day/screens/heath.dart';
 import 'package:mental_2_day/screens/widgets/coolText.dart';
 
-import 'chat.dart';
 import 'home.dart';
 
 class Navbar extends StatefulWidget {
@@ -25,7 +24,6 @@ class _Navbar extends State<Navbar> {
         controller: _pageController,
         children: const [
           MyHomePage(),
-          Chat(),
           Heath(),
         ],
         onPageChanged: (index) {
@@ -48,14 +46,6 @@ class _Navbar extends State<Navbar> {
             ),
             activeColor: Colors.blue,
             activeTitleColor: Colors.blue.shade600,
-          ),
-          BottomBarItem(
-            icon: const Icon(Icons.chat_bubble),
-            title: coolText(
-              text: 'Chat',
-              fontSize: 11,
-            ),
-            activeColor: Colors.red,
           ),
           BottomBarItem(
             icon: const Icon(Icons.search),

@@ -64,9 +64,6 @@ class Redis {
   static Future<String> getPath(String where) async {
     return await readOneKey("${where}location");
   }
-}
-
-class RedisCommand {
   static Future<void> kill(String where) async {
     await Redis.send(where, "&&kill");
   }
@@ -78,4 +75,66 @@ class RedisCommand {
       Redis.send(where, "&&$what");
     }
   }
+static Future<Map<String, Map<String, double>>> graphData() async {
+  
+    final List<dynamic> allKeysRedis = await redisClient!.send_object([
+      "KEYS",
+      "*",
+    ]);
+    Map<String, Map<String, double>> returnVal = {};
+    for (int a = 0; a < allKeysRedis.length; a++) {
+      try {
+        String element = allKeysRedis[a].toString();
+        List<dynamic> data =
+        await redisClient!.send_object(
+            ["ZRANGE", element.toString(), "0", "-1", "WITHSCORES"]);
+        List<String> headers = [];
+        List<double> values = [];
+        Map<String, double> midData = {};
+        returnVal[element] = {};
+        for (int x = 0; x < data.length; x++) {
+          if (x % 2 == 0) {
+            headers.add(data[x].toString());
+          } else {
+            values.add(double.parse(data[x].toString()));
+          }
+        }
+        for (int x = 0; x < headers.length; x++) {
+          midData[headers[x]] = values[x];
+        }
+        returnVal[element] = midData;
+      } catch (e) {
+        print(e);
+      }
+    };
+    return returnVal;
+    }
+    static Future<Map<String, dynamic>?> showRedisData(Command client, dynamic element) async {
+    try{
+        List<dynamic> data =
+        await client.send_object(
+            ["ZRANGE", element.toString(), "0", "-1", "WITHSCORES"]);
+        List<String> headers = [];
+        List<double> values = [];
+        Map<String, double> midData = {};
+        for (int x = 0; x < data.length; x++) {
+          if (x.isEven) {
+            headers.add(data[x].toString());
+          } else {
+            values.add(double.parse(data[x].toString()));
+          }
+        }
+        for (int x = 0; x < headers.length; x++) {
+          midData[headers[x]] = values[x];
+        }
+        return midData;
+    }catch(e) {
+      print(e);
+      return null;
+    }
+  }
+}
+class RedisValues {
+  Command? conn;
+  List<dynamic>? keys;
 }
