@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:bottom_bar/bottom_bar.dart';
+import 'package:mental_2_day/screens/heath.dart';
 import 'package:mental_2_day/screens/widgets/coolText.dart';
 
+import 'chat.dart';
 import 'home.dart';
 
 class Navbar extends StatefulWidget {
@@ -22,13 +24,9 @@ class _Navbar extends State<Navbar> {
       body: PageView(
         controller: _pageController,
         children: const [
-
           MyHomePage(),
-                    MyHomePage(),
-          MyHomePage(),
-
-          // CameraApp(),
-          // Search(),
+          Chat(),
+          Heath(),
         ],
         onPageChanged: (index) {
           setState(() => _currentPage = index);
@@ -52,9 +50,9 @@ class _Navbar extends State<Navbar> {
             activeTitleColor: Colors.blue.shade600,
           ),
           BottomBarItem(
-            icon: const Icon(Icons.question_mark_sharp),
+            icon: const Icon(Icons.chat_bubble),
             title: coolText(
-              text: 'What To Cook',
+              text: 'Chat',
               fontSize: 11,
             ),
             activeColor: Colors.red,
@@ -62,7 +60,7 @@ class _Navbar extends State<Navbar> {
           BottomBarItem(
             icon: const Icon(Icons.search),
             title:  coolText(
-              text: 'Find Recpies',
+              text: 'Info',
               fontSize: 11,
             ),
             backgroundColorOpacity: 0.1,

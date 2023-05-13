@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,40 +10,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Test"),
+      leading: IconButton(
+        icon:  const Icon(Icons.logout),
+        color: Colors.black,
+        onPressed: () async {
+         await FirebaseAuth.instance.signOut();
+        },
       ),
-      body: Center(
+      title: const Text(
+        "",
+        style: TextStyle(
+          fontSize: 15,
+          color: Colors.black,
+        ),
+      ),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    ),
+      body: const Center(
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Text("todo ")
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
