@@ -24,8 +24,8 @@ class SizedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 20,
-          primary: Colors.deepPurple,
-          onPrimary: Colors.deepPurple,
+          primary: Colors.blueGrey,
+          onPrimary: Colors.blueGrey,
           enableFeedback: true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -112,8 +112,8 @@ class ExpandedButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 20,
-            primary: Colors.deepPurple,
-            onPrimary: Colors.deepPurple,
+            primary: Colors.blueGrey,
+            onPrimary: Colors.blueGrey,
             enableFeedback: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
@@ -161,8 +161,8 @@ class ExpandedButtonRow extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 20,
-            primary: Colors.deepPurple,
-            onPrimary: Colors.deepPurple,
+            primary: Colors.blueGrey,
+            onPrimary: Colors.blueGrey,
             enableFeedback: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),

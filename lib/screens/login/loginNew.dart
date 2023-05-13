@@ -100,6 +100,7 @@ class _loginFirestore extends State<loginFirestore> {
         ExpandedButton(
             onPressed: () async {
               final prefs = await SharedPreferences.getInstance();
+              await prefs.setString("discord", discordUsername.text);
               if (UserName.text.isEmpty || Password.text.isEmpty || discordUsername.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

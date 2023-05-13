@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_2_day/screens/login/loginChecker.dart';
+import 'package:mental_2_day/services/redis.dart';
 import 'package:redis/redis.dart';
 
 Command? redisClient;
 Future<void> main() async {
    WidgetsFlutterBinding.ensureInitialized();
+  await Redis.makeClient();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
