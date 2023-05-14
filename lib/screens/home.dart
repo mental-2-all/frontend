@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
                DataDisplayWidget(
                 title:  "Rate", 
-                value: cool["rate"].round().toString(),
+                value: cool["rate"].toStringAsFixed(5).toString(),
               ),
               SizedBox(
                 height: 30,

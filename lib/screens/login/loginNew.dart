@@ -135,7 +135,7 @@ class _loginFirestore extends State<loginFirestore> {
                   });
                 } catch (error) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Error $error"),
+                    content: coolText(text :"Error $error", fontSize: 16,),
                   ));
                 }
               }
